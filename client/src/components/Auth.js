@@ -49,7 +49,7 @@ function Auth({setUser, setIsAuthenticated}) {
     <div className="form">
         <h1>First time? Welcome!</h1>
         <h3>Create account below!</h3>
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="row">
         <div className="six columns">
           <label>Username</label>
