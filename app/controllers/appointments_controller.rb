@@ -8,7 +8,18 @@ class AppointmentsController < ApplicationController
         appointment = Appointment.find_by(id: params[:id])
         render json: appointment
     end
-    
+
+    def update
+        appointment = Appointment.find(params[:id])
+        if appointment
+            appointment.update!( appointment_params )
+            render json: appointment
+        else
+            render json: {error: "Appointment not found"}, status: :not_found
+        end
+    end
+
+      
     def create
         appointment = Appointment.create!(appointment_params)
         render json: appointment.activity, status: :created
@@ -20,6 +31,6 @@ class AppointmentsController < ApplicationController
     end
 private
     def appointment_params
-        params.permit(:date, :time, :duration, :user_id, :dentist_id )
+        params.permit(:date, :time, :duration, :user_id, :dentist_id, :reason_for_visit )
     end
 end

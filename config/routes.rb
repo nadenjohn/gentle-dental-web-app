@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   
 
+
   # Initially Authenticate User
   get '/authorized_user', to: 'users#show'
 
