@@ -10,27 +10,54 @@ puts "🌱 Seeding spices..."
 puts "Deleting old data..."
 
 
-Appointment.destroy_all
+# Appointment.destroy_all
+# AppointmentSlot.destroy_all
 
 
 
-u1 = User.create(name: 'Louis', password: "password")
-u2 = User.create(name: 'Grace', password: "password")
-u3 = User.create(name:'Ted', password: "password")
-u4 = User.create(name:'Bill', password: "password")
-u5 = User.create(name:'Ridly', password: "password")
-u6 = User.create(name:'Bishop', password: "password")
 
-p1 = Patient.create(name: "Craig", password: "password")
+# u1 = User.create(name: 'Louis', password: "password")
+# u2 = User.create(name: 'Grace', password: "password")
+# u3 = User.create(name:'Ted', password: "password")
+# u4 = User.create(name:'Bill', password: "password")
+# u5 = User.create(name:'Ridly', password: "password")
+# u6 = User.create(name:'Bishop', password: "password")
 
-d1 = Dentist.create(name: 'George', specialty: 'Root canals', photo: 'https://cdn.westseattleblog.com/blog/wp-content/uploads/2019/01/dentistparty4-1.jpg')
-d2 = Dentist.create(name: 'Tom', specialty: 'Cleaning', photo: 'https://cdn.westseattleblog.com/blog/wp-content/uploads/2019/01/dentistparty4-1.jpg')
-d3 = Dentist.create(name: 'Sally', specialty: 'Braces', photo: 'https://www.findatopdoc.com/doctor_images/8/8a/304085.jpg?v=7b87')
-d4 = Dentist.create(name: 'Bill', specialty: 'Root canals', photo: 'https://cdn.westseattleblog.com/blog/wp-content/uploads/2019/01/dentistparty4-1.jpg')
+# p1 = Patient.create(name: "Craig", password: "password")
 
-a1 = Appointment.create!(date: "June 1, 2022", time: '9:00am', duration: 30, user_id: 1, dentist_id: 45)
-a2 = Appointment.create!(date: "June 2, 2022", time: '9:00am', duration: 30, user_id: 7, dentist_id: 45)
-a3 = Appointment.create!(date: "June 3, 2022", time: '9:00am', duration: 30, user_id: 7, dentist_id: 45)
-a4 = Appointment.create!(date: "June 4, 2022", time: '9:00am', duration: 30, user_id: 7, dentist_id: 45)
-a5 = Appointment.create!(date: "June 5, 2022", time: '9:00am', duration: 30, user_id: 7, dentist_id: 45)
-a6 = Appointment.create!(date: "June 6, 2022", time: '9:00am', duration: 30, user_id: 7, dentist_id: 45)
+# d1 = Dentist.create(name: 'Dr. Steve Martin', specialty: 'Root canals', photo: 'https://mickeyblog.com/wp-content/uploads/2020/02/Little-Shop-of-Horrors.jpg')
+# d2 = Dentist.create(name: 'Dr. Julia Harris', specialty: 'Braces', photo: 'https://www.bournemouthecho.co.uk/resources/images/1726899/?type=responsive-gallery')
+# d3 = Dentist.create(name: 'Dr. Tim Whatley', specialty: 'Cleaning', photo: 'https://mapsaboutnothing.files.wordpress.com/2013/04/819-yada-yada1.png')
+a1 = Appointment.create(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, user_id: 7, dentist_id: 59)
+a2 = Appointment.create(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, user_id: 7, dentist_id: 59)
+a3 = Appointment.create(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, user_id: 7, dentist_id: 59)
+a4 = Appointment.create(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, user_id: 7, dentist_id: 59)
+
+
+# a1 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, dentist_id: 59)
+# a2 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, dentist_id: 59)
+# a3 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, dentist_id: 59)
+# a4 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, dentist_id: 59)
+
+# a5 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '1:00pm', duration: 60, dentist_id: 59)
+# a6 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '2:00pm', duration: 60, dentist_id: 59)
+# a7 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '3:00pm', duration: 60, dentist_id: 59)
+# a8 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '4:00pm', duration: 60, dentist_id: 59)
+# a9 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, dentist_id: 60)
+# a10 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, dentist_id: 60)
+# a11 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, dentist_id: 60)
+# a12 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, dentist_id: 60)
+
+# a13 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '1:00pm', duration: 60, dentist_id: 60)
+# a14 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '2:00pm', duration: 60, dentist_id: 60)
+# a15 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '3:00pm', duration: 60, dentist_id: 60)
+# a16 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '4:00pm', duration: 60, dentist_id: 60)
+# a17 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '8:00am', duration: 60, dentist_id: 61)
+# a18 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '9:00am', duration: 60, dentist_id: 61)
+# a19 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '10:00am', duration: 60, dentist_id: 61)
+# a20 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '11:00am', duration: 60, dentist_id: 61)
+
+# a21 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '1:00pm', duration: 60, dentist_id: 61)
+# a22 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '2:00pm', duration: 60, dentist_id: 61)
+# a23 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '3:00pm', duration: 60, dentist_id: 61)
+# a24 = AppointmentSlot.create!(date: "Monday, June 1, 2022", time: '4:00pm', duration: 60, dentist_id: 61)

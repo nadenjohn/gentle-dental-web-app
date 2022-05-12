@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :appointment_slots
   resources :appointments
   resources :dentists
   resources :patients

@@ -32,20 +32,38 @@ function Auth({setUser, setIsAuthenticated}) {
         })
     }
     return(
-        <>
-        <h1>Signup</h1>
-        <form onSubmit={onSubmit}>
-            <label>
-                username
-                <input type='text' value={username} onChange={(e)=> setUsername(e.target.value)}/>
-            </label>
-            <label>
-                Password
-                <input type='text' value={password} onChange={(e)=> setPassword(e.target.value)}/>
-            </label>
-            <input type="submit" value="Sign up!" />
-        </form>
-        </>
+        // <>
+        // <h1>Signup</h1>
+        // <form onSubmit={onSubmit}>
+        //     <label>
+        //         username
+        //         <input type='text' value={username} onChange={(e)=> setUsername(e.target.value)}/>
+        //     </label>
+        //     <label>
+        //         Password
+        //         <input type='text' value={password} onChange={(e)=> setPassword(e.target.value)}/>
+        //     </label>
+        //     <input type="submit" value="Sign up!" />
+        // </form>
+        // </>
+    <div className="form">
+        <h1>First time? Welcome!</h1>
+        <h3>Create account below!</h3>
+    <form>
+      <div className="row">
+        <div className="six columns">
+          <label>Username</label>
+          <input className="u-full-width" type="text" placeholder="Enter new username..." id="exampleEmailInput" onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div className="six columns">
+          <label >Password</label>
+          <input className="u-full-width" type="text" placeholder="enter new password..." id="exampleEmailInput" onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+      </div>
+      <input className="button-primary" type="submit" value="Sign up!"/>
+    </form>
+    </div>
+    
     )
 }
 

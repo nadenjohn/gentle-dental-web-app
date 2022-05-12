@@ -1,11 +1,13 @@
 import DentistItem from "./DentistItem";
 
-function Dentists({dentists, user}) {
+function Dentists({dentists, user, handlePost}) {
+    
     return (
-     <div className="container">
-         <div>{dentists.map(dentist => <DentistItem  key={dentist.id} dentist={dentist} user={user} />)}</div>
-     </div>
+     <body>
+          <div>{dentists.map(dentist => <DentistItem  key={dentist.id} dentist={dentist} user={user} handlePost={handlePost} />)}</div>
+     </body>
     );
   }
   
   export default Dentists;
+

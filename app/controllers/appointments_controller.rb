@@ -13,7 +13,12 @@ class AppointmentsController < ApplicationController
         appointment = Appointment.create!(appointment_params)
         render json: appointment.activity, status: :created
     end
-
+    def destroy
+        appointment = Appointment.find(params[:id])
+        appointment.destroy
+        head :no_content
+    end
+private
     def appointment_params
         params.permit(:date, :time, :duration, :user_id, :dentist_id )
     end

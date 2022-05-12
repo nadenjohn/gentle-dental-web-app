@@ -16,7 +16,7 @@ function Home() {
                 </div>
                 <div className="one-half column">
                     <img src = 'https://previews.123rf.com/images/lenm/lenm1611/lenm161100119/66110532-mascot-illustration-of-a-happy-smiley-in-colorful-braces-showing-the-dental-work-done-on-him.jpg'
-                    className="showcase-img"></img>
+                    className="home-img"></img>
                 </div>
             </div>
         

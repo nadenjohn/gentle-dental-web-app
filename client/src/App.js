@@ -17,11 +17,16 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [appointments, setAppointments] = useState([])
 
-function handleRenderDentists(data){
-  setDentists(data)
-  console.log(data)
-}
+  function handleRenderDentists(data){
+    setDentists(data)
+    console.log(data)
+  }
+  function onCancelAppointment(id) {
+    const updatedAppointments = appointments.filter((appointment) => appointment.id !== id);
+    setAppointments(updatedAppointments);
+  }
 
 
   useEffect(() => {
@@ -32,24 +37,35 @@ function handleRenderDentists(data){
         .then((user) => {
           setIsAuthenticated(true);
           setUser(user);
-        })
+        });
       
       }
     });
+  
   
     fetch('/dentists')
     .then(res => res.json())
     .then(handleRenderDentists);
 
   },[]);
+
+  function handlePost(obj){
+    fetch('/appointments',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify(obj)
+    })
+    .then (res => res.json())
+    .then(data => {setAppointments([...appointments,data])})
+}
   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
   return (
     <>
     <Navigation setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
     <Routes>
     <Route exact path="/" element={<Home />} />
-    <Route exact path="/Dentists" element={<Dentists dentists={dentists} user={user}/>} />
-    <Route exact path="/Appointments" element={<Appointments user={user}/>} />
+    <Route exact path="/Dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
+    <Route exact path="/Appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment}/>} />
 
     
     {/* <Route exact path="/signup" element={<Auth/>} />
