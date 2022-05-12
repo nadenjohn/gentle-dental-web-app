@@ -7,9 +7,7 @@ function DentistItem({dentist, user, handlePost}) {
   const [appointmentOption, setAppointmentOption] = useState("")
   const [appointmentSlots, setAppointmentSlots] = useState([])
   const [appointmentSlot, setAppointmentSlot] = useState(null)
-    console.log(dentist)
-    console.log(appointmentOption)
-    console.log(appointmentSlot)
+
 
   const id = appointmentOption
 
@@ -51,13 +49,13 @@ function DentistItem({dentist, user, handlePost}) {
     return (
       
       
-          <div clasName="container">
+          <div>
             <div className="row">
               <div className="four columns">
                 <div className="polaroid">
                   <p>{dentist.name}</p>
                   <img className="dentist-img" src={dentist.photo} alt={dentist.name} />
-                  <div class="container">
+                  <div className="container">
                   </div>
                 </div>  
               </div>
@@ -82,6 +80,11 @@ function DentistItem({dentist, user, handlePost}) {
             </div>
           </div>
         
+        // <div className="project-item">
+        //   <h3>{dentist.name}</h3>
+        //   <p>{dentist.specialty}</p>
+        //   <div className="technologies">{dentist.name}</div>
+        // </div>
        
   
     )

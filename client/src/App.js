@@ -21,13 +21,21 @@ function App() {
 
   function handleRenderDentists(data){
     setDentists(data)
-    console.log(data)
   }
   function onCancelAppointment(id) {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== id);
     setAppointments(updatedAppointments);
   }
-
+  function handleUpdateAppointment(updatedAppointment) {
+    const updatedAppointments = appointments.map((appointment) => {
+      if (appointment.id === updatedAppointment.id) {
+        return updatedAppointment;
+      } else {
+        return appointment;
+      }
+    });
+    setAppointments(updatedAppointments);
+  }
 
   useEffect(() => {
     fetch('/authorized_user')
@@ -60,19 +68,19 @@ function App() {
 }
   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
   return (
-    <>
+    <div>
     <Navigation setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
     <Routes>
     <Route exact path="/" element={<Home />} />
-    <Route exact path="/Dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
-    <Route exact path="/Appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment}/>} />
+    <Route path="/dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
+    <Route path="/appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment} onUpdateAppointment={handleUpdateAppointment}/>} />
 
     
     {/* <Route exact path="/signup" element={<Auth/>} />
     <Route exact path="/login" element={<Login/>} /> */}
      
     </Routes>
-  </>
+  </div>
   );
 }
 
