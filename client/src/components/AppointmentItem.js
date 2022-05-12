@@ -43,9 +43,7 @@ const handleReasonForVisit = (e) => {
     return (
 
       <>
-       <h1>{date}</h1>
-       <h2>{time}</h2>
-       <h2>{reason_for_visit}</h2>
+       <h1>{date} @ {time}. Reason for visit: {reason_for_visit}</h1>
        <div className="remove-btn">
         <button onClick={() => handleCancelAppointment(appointment.id)}>Cancel Appointment</button>
       </div>
