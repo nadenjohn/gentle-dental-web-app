@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
       
     def create
         appointment = Appointment.create!(appointment_params)
-        render json: appointment.activity, status: :created
+        render json: appointment, status: :created
     end
     def destroy
         appointment = Appointment.find(params[:id])

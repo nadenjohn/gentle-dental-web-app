@@ -2,25 +2,25 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
-import './Skeleton-2.0.4 2/css/normalize.css'
-import './Skeleton-2.0.4 2/css/skeleton.css'
-import Auth from './components/Auth'
-import Login from './components/Login'
-import Navigation from './components/Navigation'
-import Dentists from  "./components/Dentists"
-import Home from "./components/Home"
-import Appointments from "./components/Appointments"
+// import './Skeleton-2.0.4 2/css/normalize.css';
+// import './Skeleton-2.0.4 2/css/skeleton.css';
+import Auth from './components/Auth';
+import Login from './components/Login';
+import Navigation from './components/Navigation';
+import Dentists from  "./components/Dentists";
+import Home from "./components/Home";
+import Appointments from "./components/Appointments";
 
 function App() {
-  const [dentists, setDentists] = useState([])
+  const [dentists, setDentists] = useState([]);
 
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [user, setUser] = useState(null)
-  const [appointments, setAppointments] = useState([])
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [appointments, setAppointments] = useState([]);
 
   function handleRenderDentists(data){
-    setDentists(data)
+    setDentists(data);
   }
   function onCancelAppointment(id) {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== id);
@@ -50,11 +50,9 @@ function App() {
       }
     });
   
-  
     fetch('/dentists')
     .then(res => res.json())
     .then(handleRenderDentists);
-
   },[]);
 
   function handlePost(obj){
@@ -69,17 +67,12 @@ function App() {
   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
   return (
     <div>
-    <Navigation setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
-    <Routes>
-    <Route exact path="/" element={<Home />} />
-    <Route path="/dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
-    <Route path="/appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment} onUpdateAppointment={handleUpdateAppointment}/>} />
-
-    
-    {/* <Route exact path="/signup" element={<Auth/>} />
-    <Route exact path="/login" element={<Login/>} /> */}
-     
-    </Routes>
+      <Navigation setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
+      <Routes>
+       <Route exact path="/" element={<Home />} />
+        <Route path="/dentists" element={<Dentists dentists={dentists} user={user} handlePost={handlePost}/>} />
+        <Route path="/appointments" element={<Appointments user={user} onCancelAppointment={onCancelAppointment} onUpdateAppointment={handleUpdateAppointment}/>} />
+      </Routes>
   </div>
   );
 }
