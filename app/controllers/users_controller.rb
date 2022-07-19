@@ -1,45 +1,43 @@
 class UsersController < ApplicationController
-    before_action :authorize_user, except: [:create]
+  before_action :authorize_user, except: [:create]
+    
+  # GET "/users"
+  def index 
+    render json: User.all
+  end 
+    
+  # GET "/users/:id"
+  def show
+    current_user = User.find_by(id: session[:current_user])
+    render json: current_user
+  end 
 
-
-    # GET "/users"
-    def index 
-        render json: User.all
-    end 
-
-    # GET "/users/:id"
-    def show
-        current_user = User.find_by(id: session[:current_user])
-        render json: current_user
-    end 
-
-    # POST "/users"
-    def create
-        user = User.create!(user_params)
-        session[:current_user] = user.id
-
-        render json: user, status: :created
+  # POST "/users"
+  def create
+    user = User.create!(user_params)
+    session[:current_user] = user.id
+    render json: user, status: :created
     rescue ActiveRecord::RecordInvalid => invalid
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
-    end 
+      render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+  end 
 
-    # PUT "/users/:id"
-    def update
-        user = User.find(params[:id])
-        user.update!(user_params)
-        render json: user, status: :created
-    end
+  # PUT "/users/:id"
+  def update
+    user = User.find(params[:id])
+    user.update!(user_params)
+    render json: user, status: :created
+  end
 
-    # DELETE "/users/:id"
-    def destroy
-        user = User.find(params[:id])
-        user.destroy
-        head :no_content
-    end
+  # DELETE "/users/:id"
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    head :no_content
+  end
 
-    private 
+private 
 
-    def user_params
-        params.permit(:name, :password)
-    end 
+  def user_params
+    params.permit(:name, :password)
+  end 
 end
