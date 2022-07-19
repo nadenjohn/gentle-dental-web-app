@@ -1,3 +1,3 @@
 class AppointmentSlot < ApplicationRecord
-    belongs_to :dentist
+  belongs_to :dentist
 end
